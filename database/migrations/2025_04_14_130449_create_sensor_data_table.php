@@ -15,6 +15,10 @@ return new class extends Migration
             $table->id();
             $table->double('pressure');
             $table->double(column: 'temperature');
+            $table->string('status_message');  
+            $table->boolean('invalve')->default(false);
+            $table->boolean('outvalve')->default(false);
+
             $table->timestamps();
         });
     }

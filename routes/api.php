@@ -14,5 +14,8 @@ Route::get('/user', function (Request $request) {
 Route::post(uri: '/sensor-data', action: [SensorDataController::class, 'store']);
 
 Route::get('/sensor-data/show', function () {
-    return SensorData::latest()->take(1)->get();
+    return SensorData::select('temperature', 'pressure', 'timestamp', 'status_message', 'invalve', 'outvalve')
+        ->latest()
+        ->take(1)
+        ->get();
 });
